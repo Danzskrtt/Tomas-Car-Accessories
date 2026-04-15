@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="activity-card" stylesheets="@../../View/style/activity-card.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ActivityCardController">
+    <padding>
+        <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+    </padding>
+    <children>
+        <Label fx:id="activityInitial" minWidth="-Infinity" style="-fx-font-size: 24px;" text="📝" />
+        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+            <children>
+                <Label fx:id="activityDescription" style="-fx-font-size: 13px; -fx-font-weight: bold;" text="Activity Description" wrapText="true" />
+                <Label fx:id="activityTimestamp" style="-fx-font-size: 11px; -fx-text-fill: #888888;" text="Timestamp" />
+            </children>
+        </VBox>
+    </children>
+</HBox>
