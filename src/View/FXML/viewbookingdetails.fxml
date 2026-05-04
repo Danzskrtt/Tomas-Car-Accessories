@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #f4f6f8;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewBookingDetailsController">
+   <children>
+      <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         
+         <HBox alignment="CENTER_LEFT" style="-fx-background-color: white; -fx-padding: 15 25; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);">
+            <VBox>
+               <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Booking Details" />
+               <Label fx:id="lblHeaderSubtitle" style="-fx-font-size: 13px; -fx-text-fill: #7f8c8d;" text="Booking # -" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStatusBadge" alignment="CENTER" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 6 12; -fx-background-radius: 15;" text="STATUS" />
+            <Region prefWidth="20.0" />
+            <Button onAction="#handleClose" style="-fx-background-color: transparent; -fx-border-color: #bdc3c7; -fx-border-radius: 4; -fx-text-fill: #34495e; -fx-cursor: hand; -fx-padding: 6 16;" text="Close">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Button>
+         </HBox>
+
+         <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+            <content>
+               <HBox spacing="25.0" style="-fx-padding: 25;">
+                  
+                  <VBox spacing="20.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
+                     
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);" spacing="15.0">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Booking Information" />
+                        <Separator />
+                        <VBox spacing="20.0">
+                           <HBox spacing="20.0">
+                              <VBox spacing="8.0" HBox.hgrow="ALWAYS" prefWidth="200.0">
+                                 <Label style="-fx-font-size: 12px; -fx-text-fill: #95a5a6; -fx-font-weight: bold;" text="CUSTOMER NAME" />
+                                 <Label fx:id="lblCustomerName" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" text="-" wrapText="true" />
+                              </VBox>
+                              <VBox spacing="8.0" HBox.hgrow="ALWAYS" prefWidth="200.0">
+                                 <Label style="-fx-font-size: 12px; -fx-text-fill: #95a5a6; -fx-font-weight: bold;" text="DATE &amp; TIME" />
+                                 <Label fx:id="lblBookingDate" style="-fx-font-size: 16px; -fx-text-fill: #34495e;" text="-" wrapText="true" />
+                              </VBox>
+                           </HBox>
+                           
+                           <VBox spacing="8.0">
+                              <Label style="-fx-font-size: 12px; -fx-text-fill: #95a5a6; -fx-font-weight: bold;" text="SERVICE TYPE(S)" />
+                              <FlowPane fx:id="flowServiceTypes" hgap="10.0" vgap="10.0" />
+                           </VBox>
+
+                           <VBox spacing="8.0" VBox.vgrow="ALWAYS">
+                              <Label style="-fx-font-size: 12px; -fx-text-fill: #95a5a6; -fx-font-weight: bold;" text="NOTES" />
+                              <Label fx:id="lblNotes" style="-fx-font-size: 15px; -fx-text-fill: #34495e; -fx-font-style: italic;" text="-" wrapText="true" minHeight="60.0" alignment="TOP_LEFT" />
+                           </VBox>
+                        </VBox>
+                     </VBox>
+
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);" spacing="10.0">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Assigned Staff" />
+                        <Separator />
+                        <ListView fx:id="listStaff" prefHeight="100.0" style="-fx-background-insets: 0;" />
+                     </VBox>
+
+                  </VBox>
+
+                  <VBox spacing="20.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
+                     
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);" spacing="15.0">
+                        <HBox alignment="CENTER_LEFT">
+                           <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Vehicle Details" />
+                           <Region HBox.hgrow="ALWAYS" />
+                           <Label fx:id="lblVehicleInfo" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #34495e;" text="-" />
+                        </HBox>
+                        <Separator />
+                        
+                        <HBox alignment="CENTER">
+                           <StackPane style="-fx-border-color: #ecf0f1; -fx-border-width: 2; -fx-border-radius: 8; -fx-background-color: #f8f9fa; -fx-background-radius: 8;" prefHeight="180.0" prefWidth="300.0">
+                              <Label fx:id="lblNoImage" text="No vehicle image available" style="-fx-text-fill: #bdc3c7; -fx-font-size: 14px;" />
+                              <ImageView fx:id="imgVehiclePhoto" fitHeight="176.0" fitWidth="296.0" preserveRatio="true" />
+                           </StackPane>
+                        </HBox>
+                     </VBox>
+
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);" spacing="10.0" VBox.vgrow="ALWAYS">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Products / Parts Used" />
+                        <Separator />
+                        <ListView fx:id="listProducts" prefHeight="120.0" style="-fx-background-insets: 0;" />
+                     </VBox>
+                     
+                     <VBox style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 20; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);" spacing="10.0">
+                        <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Payment Summary" />
+                        <Separator />
+                        <HBox>
+                           <Label style="-fx-text-fill: #7f8c8d;" text="Total Estimated Cost:" />
+                           <Region HBox.hgrow="ALWAYS" />
+                           <Label fx:id="lblTotalCost" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="₱0.00" />
+                        </HBox>
+                        <HBox>
+                           <Label style="-fx-text-fill: #7f8c8d;" text="Downpayment / Paid:" />
+                           <Region HBox.hgrow="ALWAYS" />
+                           <Label fx:id="lblDownpayment" style="-fx-font-weight: bold; -fx-text-fill: #27ae60;" text="₱0.00" />
+                        </HBox>
+                        <HBox>
+                           <Label style="-fx-text-fill: #7f8c8d; -fx-font-weight: bold;" text="Balance:" />
+                           <Region HBox.hgrow="ALWAYS" />
+                           <Label fx:id="lblBalance" style="-fx-font-weight: bold; -fx-text-fill: #e74c3c;" text="₱0.00" />
+                        </HBox>
+                     </VBox>
+
+                  </VBox>
+               </HBox>
+            </content>
+         </ScrollPane>
+      </VBox>
+   </children>
+</AnchorPane>

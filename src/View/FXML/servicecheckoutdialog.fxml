@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" style="-fx-background-color: #f5f5f5;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ServiceCheckoutDialogController">
+   <children>
+      <VBox spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+
+         <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E5E7EB; -fx-border-radius: 8;">
+            <VBox>
+               <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Service POS Checkout" />
+               <Label fx:id="lblBookingNumber" style="-fx-font-size: 13px; -fx-text-fill: #64748B;" text="Booking #SB-000000" />
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER_RIGHT">
+               <Label fx:id="lblCustomerName" style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #1E293B;" text="Customer Name" />
+               <Label fx:id="lblCarDetails" style="-fx-font-size: 13px; -fx-text-fill: #64748B;" text="Toyota Vios (ABC-1234)" />
+            </VBox>
+         </HBox>
+
+         <HBox spacing="15.0" VBox.vgrow="ALWAYS">
+            
+            <!-- Left Panel: Products Search and Cart -->
+            <VBox spacing="10.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E5E7EB; -fx-border-radius: 8;" HBox.hgrow="ALWAYS">
+               <Label style="-fx-font-weight: bold;" text="Add Products" />
+               <TextField fx:id="txtSearchProduct" promptText="Search products by name or code..." />
+               
+               <ScrollPane fitToWidth="true" prefHeight="250.0" style="-fx-background-color: transparent; -fx-background: white; -fx-padding: 0;">
+                  <content>
+                     <javafx.scene.layout.FlowPane fx:id="flowProducts" hgap="10.0" vgap="10.0" style="-fx-padding: 5;"/>
+                  </content>
+               </ScrollPane>
+               
+               <Separator />
+               
+               <HBox alignment="CENTER_LEFT">
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnRemoveItem" disable="true" onAction="#handleRemoveItem" style="-fx-background-color: #fee2e2; -fx-text-fill: #dc2626;" text="Remove Product" />
+               </HBox>
+               
+               <TableView fx:id="tblCart" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="colCartItem" prefWidth="250.0" text="Item / Service" />
+                     <TableColumn fx:id="colCartQty" prefWidth="60.0" text="Qty" />
+                     <TableColumn fx:id="colCartPrice" prefWidth="100.0" text="Unit Price" />
+                     <TableColumn fx:id="colCartTotal" prefWidth="100.0" text="Total" />
+                  </columns>
+                  <columnResizePolicy>
+                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                  </columnResizePolicy>
+               </TableView>
+            </VBox>
+
+            <!-- Right Panel: Summary & Checkout -->
+            <VBox prefWidth="350.0" spacing="15.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #E5E7EB; -fx-border-radius: 8;">
+               <Label style="-fx-font-size: 16px; -fx-font-weight: bold;" text="Payment Summary" />
+               
+               <VBox spacing="8.0" style="-fx-background-color: #f8fafc; -fx-padding: 12; -fx-border-color: #e2e8f0; -fx-border-radius: 6; -fx-background-radius: 6;">
+                  <HBox>
+                     <Label text="Services Total" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lblServicesTotal" text="₱0.00" />
+                  </HBox>
+                  <HBox>
+                     <Label text="Products Total" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lblProductsTotal" text="₱0.00" />
+                  </HBox>
+                  <Separator />
+                  <HBox>
+                     <Label style="-fx-font-weight: bold;" text="Subtotal" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lblSubtotal" style="-fx-font-weight: bold;" text="₱0.00" />
+                  </HBox>
+
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <Label text="Discount" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <PasswordField fx:id="txtAdminPassword" prefWidth="90.0" promptText="Admin Pass" />
+                     <TextField fx:id="txtDiscount" prefWidth="70.0" promptText="0.00" text="0.00" />
+                  </HBox>
+
+                  <HBox>
+                     <Label text="VAT (12%)" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lblVat" text="₱0.00" />
+                  </HBox>
+                  <HBox>
+                     <Label text="Downpayment" />
+                     <Region HBox.hgrow="ALWAYS" />
+                     <Label fx:id="lblDownpayment" text="₱0.00" />
+                  </HBox>
+               </VBox>
+               
+               <HBox alignment="CENTER_LEFT">
+                  <Label style="-fx-font-size: 14px; -fx-font-weight: bold;" text="Grand Total" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblGrandTotal" style="-fx-font-size: 16px; -fx-font-weight: bold;" text="₱0.00" />
+               </HBox>
+               
+               <HBox alignment="CENTER_LEFT">
+                  <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Balance Due" />
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblBalanceDue" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #DC143C;" text="₱0.00" />
+               </HBox>
+               
+               <Separator />
+               
+               <VBox spacing="5.0">
+                  <Label style="-fx-font-weight: bold;" text="Payment Method" />
+                  <ComboBox fx:id="cmbPaymentMethod" maxWidth="Infinity" />
+               </VBox>
+               
+               <Region VBox.vgrow="ALWAYS" />
+               
+               <HBox spacing="10.0">
+                  <Button fx:id="btnComplete" maxWidth="Infinity" onAction="#handleComplete" style="-fx-background-color: #10B981; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10;" text="Complete Transaction" HBox.hgrow="ALWAYS" />
+                  <Button fx:id="btnCancel" maxWidth="Infinity" onAction="#handleCancel" style="-fx-background-color: #64748b; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-padding: 10;" text="Cancel" HBox.hgrow="ALWAYS" />
+               </HBox>
+               
+            </VBox>
+         </HBox>
+      </VBox>
+   </children>
+</AnchorPane>

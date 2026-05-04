@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefWidth="550.0" prefHeight="750.0" minHeight="650.0" minWidth="450.0" spacing="20.0" style="-fx-background-color: white; -fx-padding: 25;" stylesheets="@../style/dialog-styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewUserController">
+   <padding>
+      <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+   </padding>
+   
+   <!-- Header Section -->
+   <VBox spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2); -fx-padding: 20;">
+      <HBox alignment="CENTER_LEFT" spacing="15.0">
+         <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #6c757d;" text="User Details">
+            <font>
+               <Font name="System Bold" size="28.0" />
+            </font>
+         </Label>
+         <Region HBox.hgrow="ALWAYS" />
+         <Label style="-fx-font-size: 24px;" text="📋" />
+      </HBox>
+   </VBox>
+   
+   <!-- User Information Card -->
+   <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2); -fx-padding: 25;" VBox.vgrow="ALWAYS">
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <Label style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="User Information">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font>
+         </Label>
+         <Region HBox.hgrow="ALWAYS" />
+         <Label fx:id="lblUserIdBadge" style="-fx-background-color: #DC143C; -fx-text-fill: white; -fx-padding: 5 12; -fx-background-radius: 12; -fx-font-size: 12px; -fx-font-weight: bold;" text="ID: 0" />
+      </HBox>
+      <Separator />
+      
+      <GridPane hgap="20.0" vgap="20.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="NEVER" minWidth="140.0" />
+            <ColumnConstraints hgrow="ALWAYS" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+         
+         <!-- Username -->
+         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;" text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+         <Label fx:id="lblUsername" style="-fx-font-size: 14px; -fx-text-fill: #333333; -fx-font-weight: bold;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+         
+         <!-- Password (masked) -->
+         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;" text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+         <Label fx:id="lblPassword" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="••••••••" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         
+         <!-- First Name -->
+         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;" text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+         <Label fx:id="lblFirstName" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         
+         <!-- Last Name -->
+         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;" text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+         <Label fx:id="lblLastName" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         
+         <!-- Email -->
+         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+         <Label fx:id="lblEmail" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         
+         <!-- Phone -->
+         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;" text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+         <Label fx:id="lblPhone" style="-fx-font-size: 14px; -fx-text-fill: #333333;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         
+         <!-- Role -->
+         <Label style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #666666;" text="Role:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+         <Label fx:id="lblRole" style="-fx-font-size: 14px; -fx-text-fill: #333333; -fx-font-weight: bold;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      </GridPane>
+   </VBox>
+   
+   <!-- Action Buttons -->
+   <HBox alignment="CENTER" spacing="15.0" style="-fx-padding: 10 0 0 0;">
+      <Button fx:id="btnEdit" onAction="#handleEdit" prefWidth="200.0" styleClass="button-save" text="Edit User">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnClose" onAction="#handleClose" prefWidth="200.0" styleClass="button-cancel" text="Close">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </HBox>
+</VBox>

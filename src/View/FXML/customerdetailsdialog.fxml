@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<VBox prefWidth="1200.0" prefHeight="760.0" minHeight="720.0" minWidth="1000.0" spacing="20.0" stylesheets="@../style/dialog-styles.css" style="-fx-background-color: #F8F9FA; -fx-font-family: 'Segoe UI';" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CustomerDetailsDialogController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+
+    <!-- Top Card: Header Section -->
+    <VBox spacing="8.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2); -fx-padding: 20;" VBox.vgrow="NEVER">
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <Label style="-fx-font-size: 28px; -fx-font-weight: bold; -fx-text-fill: #DC143C;" text="Customer Details">
+                <font>
+                    <Font name="System Bold" size="28.0" />
+                </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label style="-fx-font-size: 24px;" text="👤" />
+        </HBox>
+        <Label fx:id="lblCustomerId" style="-fx-font-size: 14px; -fx-text-fill: #666666; -fx-font-weight: bold;" text="Customer ID: " />
+    </VBox>
+
+    <!-- Middle Area: Scrollable Content to prevent clipping -->
+    <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+        <!-- Slight inner padding prevents shadows from being cut off by the scroll boundary -->
+        <VBox spacing="20.0" style="-fx-background-color: transparent; -fx-padding: 5;">
+            
+            <!-- Middle Card: Personal Information -->
+            <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2); -fx-padding: 20;" VBox.vgrow="NEVER">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Personal Information" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="btnEditCustomer" onAction="#handleEditCustomer" style="-fx-background-color: transparent; -fx-text-fill: #007bff; -fx-cursor: hand; -fx-font-size: 14px; -fx-font-weight: bold;" text="Edit Details" />
+                </HBox>
+                <Separator />
+                
+                <GridPane hgap="20.0" vgap="15.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="NEVER" minWidth="120.0" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+
+                    <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <Label fx:id="lblCustomerName" style="-fx-font-size: 15px; -fx-text-fill: #333;" text="[Name]" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                    <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <Label fx:id="lblCustomerEmail" style="-fx-font-size: 15px; -fx-text-fill: #333;" text="[Email]" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                    <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <Label fx:id="lblCustomerPhone" style="-fx-font-size: 15px; -fx-text-fill: #333;" text="[Phone]" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #555555;" text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                    <Label fx:id="lblCustomerAddress" style="-fx-font-size: 15px; -fx-text-fill: #333;" text="[Address]" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                </GridPane>
+            </VBox>
+
+            <!-- Bottom Card: Vehicles Section -->
+            <VBox spacing="15.0" style="-fx-background-color: white; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 8, 0, 0, 2); -fx-padding: 20;" VBox.vgrow="ALWAYS">
+                <HBox alignment="CENTER_LEFT" spacing="10.0">
+                    <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #333333;" text="Registered Vehicles" />
+                    <Label fx:id="lblVehicleCount" style="-fx-background-color: #DC143C; -fx-text-fill: white; -fx-padding: 2 10; -fx-background-radius: 12; -fx-font-weight: bold; -fx-font-size: 14px;" text="0" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button fx:id="btnAddVehicle" onAction="#handleAddVehicle" styleClass="button-save" style="-fx-font-size: 13px; -fx-font-weight: bold; -fx-padding: 8 15;" text="+ Add Vehicle" />
+                </HBox>
+                <Separator />
+                
+                <ScrollPane fx:id="scrollPaneVehicles" fitToWidth="true" hbarPolicy="NEVER" prefHeight="265.0" minHeight="250.0" style="-fx-background-color: transparent; -fx-background: transparent; -fx-border-color: transparent;" VBox.vgrow="ALWAYS">
+                    <FlowPane fx:id="vehicleCardsContainer" alignment="CENTER" hgap="20.0" vgap="20.0" style="-fx-padding: 5; -fx-background-color: transparent;">
+                        <Label fx:id="lblNoVehicles" style="-fx-font-style: italic; -fx-font-size: 15px; -fx-text-fill: #888888;" text="No vehicles registered for this customer." />
+                    </FlowPane>
+                </ScrollPane>
+            </VBox>
+
+        </VBox>
+    </ScrollPane>
+
+    <!-- Bottom Actions: Always visible exactly at the bottom -->
+    <HBox spacing="20.0" VBox.vgrow="NEVER" alignment="CENTER" style="-fx-padding: 5 0 0 0;">
+        <Button fx:id="btnViewServiceHistory" onAction="#handleViewServiceHistory" styleClass="button-save" style="-fx-font-size: 14px; -fx-padding: 10 25; -fx-font-weight: bold;" text="View Service History" />
+        <Button fx:id="btnCloseBottom" onAction="#handleClose" prefWidth="150.0" styleClass="button-cancel" style="-fx-font-size: 14px; -fx-padding: 10 25;" text="Close">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Button>
+    </HBox>
+
+</VBox>
+
